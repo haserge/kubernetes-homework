@@ -10,6 +10,16 @@ data:
             return 200 '$hostname\n';
         }
     }
+  canary.conf: |-
+    server {
+        listen 80 default_server;
+        server_name _;
+        default_type text/plain;
+
+        location / {
+            return 200 'CANARY $hostname\n';
+        }
+    }
 kind: ConfigMap
 metadata:
   creationTimestamp: null

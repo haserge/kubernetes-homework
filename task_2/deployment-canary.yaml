@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web
-  name: web
+    app: web-canary
+  name: web-canary
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: web
+      app: web-canary
   template:
     metadata:
       labels:
-        app: web
+        app: web-canary
     spec:
       containers:
       - image: nginx:latest
@@ -27,6 +27,6 @@ spec:
           configMap:
             name: nginx-configmap
             items:
-            - key: default.conf
-              path: default.conf
+            - key: canary.conf
+              path: canary.conf
 
