@@ -1,4 +1,4 @@
-# Homework 1
+# Homework
 * Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
 ### Create a deployment nginx (file nginx_deployment.yaml)
 ```yaml
@@ -27,5 +27,5 @@ spec:
 ### Get pods status
 ![pic2](https://github.com/haserge/kubernetes-homework/blob/main//task_1/2.JPG?raw=true)
 ### Remove one of the pods and see that another pod is running
-![pic3](https://github.com/haserge/kubernetes-_homework/blob/main/task_1/3.JPG?raw=true)
+![pic3](https://github.com/haserge/kubernetes-homework/blob/main/task_1/3.JPG?raw=true)
 
