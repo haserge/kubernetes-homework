@@ -289,7 +289,7 @@ spec:
             name: nginx-configmap
             items:
             - key: canary.conf
-              path: canary.conf
+              path: default.conf
 ```
 Apply canary deployment
 ```bash
