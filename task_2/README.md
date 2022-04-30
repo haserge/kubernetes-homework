@@ -144,7 +144,7 @@ Address: 172.17.0.4
 # Homework
 * In Minikube in namespace kube-system, there are many different pods running. Your task is to figure out who creates them, and who makes sure they are running (restores them after deletion).<br>
 
-kube-system - the namespace for objects created by the Kubernetes system.
+kube-system - the namespace for objects created by the Kubernetes system
 ```bash
 kubectl get all -n kube-system
 NAME                                   READY   STATUS    RESTARTS      AGE
@@ -212,7 +212,41 @@ metadata:
   creationTimestamp: null
   name: nginx-configmap
 ```
-Apply regular (existing) deployment
+Modify the existing deployment to use the modified configmap
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+  name: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: config-nginx
+            mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: config-nginx
+          configMap:
+            name: nginx-configmap
+            items:
+            - key: default.conf
+              path: default.conf
+```
+Apply regular deployment
 ```bash
 kubectl apply -f deployment.yaml
 deployment.apps/web created
