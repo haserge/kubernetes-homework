@@ -176,7 +176,7 @@ Create users in Kubernetes
 ```bash
 kubectl config set-credentials prod_admin \
 --client-certificate=prod_admin.crt \
---client-key=deploy_view.key
+--client-key=prod_admin.key
 User "prod_admin" set.
 kubectl config set-credentials prod_view \
 --client-certificate=prod_view.crt \
